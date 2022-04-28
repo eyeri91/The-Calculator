@@ -2,10 +2,11 @@ const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
 const allClear = document.querySelector('.all-clear');
 const clear = document.querySelector('.clear');
-const savedInput = document.querySelector('.saved-input');
-const currentNum = document.querySelector('.current-num');
+const preOperand = document.querySelector('.previous-operand');
+const curOperand = document.querySelector('.current-operand');
 
-let input = '';
+let firstNum = '';
+let secondNum = '';
 let savedNum = '';
 
 function add(num1, num2) {
@@ -41,28 +42,28 @@ function operate(operator, num1, num2) {
 }
 
 numbers.forEach(number =>
-    (number.addEventListener('click', () => getNewNumber(number.textContent)))
+    (number.addEventListener('click', () => getNewOperand(number.textContent)))
 )
 
-// How to avoid having 0 as the first number?
-function getNewNumber(number) {
-    currentNum.innerHTML += number;
+function getNewOperand(number) {
+    if (number === '0'
+        && (curOperand.innerHTML === '')) return
+    curOperand.innerHTML += number;
 }
 
 operators.forEach(operator =>
-    (operator.addEventListener('click', () => displayNewNum(operator.textContent)))
+    (operator.addEventListener('click', () => displayNum(operator.textContent)))
 )
 
-function displayNewNum(operator) {
-    savedNum += currentNum.innerHTML;
+function displayNum(operator) {
+    savedNum += curOperand.innerHTML;
     savedNum += ` ${operator} `
-    savedInput.innerHTML += savedNum;
+    preOperand.innerHTML += savedNum;
 
-    // Reset the current
+    // Reset the current number display to get a new number;
     resetCurrentNum();
     savedNum = '';
 }
 
-
-resetCurrentNum = () => currentNum.innerHTML = '';
+resetCurrentNum = () => curOperand.innerHTML = '';
 // resetSavedNum = () => savedNum = '';
