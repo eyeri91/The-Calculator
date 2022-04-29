@@ -55,6 +55,14 @@ function resetAll() {
     curOperator = '';
 }
 
+clear.addEventListener('click', clearLastInput)
+
+function clearLastInput() {
+    if (curOperand.innerHTML === '') return
+    firstNum = curOperand.innerHTML.slice(0, -1);
+    curOperand.innerHTML = firstNum;
+}
+
 numbers.forEach(number =>
     (number.addEventListener('click', () => getNewOperand(number.textContent)))
 )
