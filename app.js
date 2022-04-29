@@ -40,7 +40,16 @@ function round(num) {
 }
 
 
-equals.addEventListener('click', operate);
+equals.addEventListener('click', evaluate);
+
+function evaluate() {
+    if ((preOperand === '' && curOperand === '')
+        || (preOperand === '' && curOperand !== '')
+        || (preOperand !== '' && curOperand === '')) return;
+    let preInputList = preOperand.innerHTML.trim().split(' ');
+    console.log(preInputList);
+
+}
 
 function operate(num1, operator, num2) {
     return operator(num1, num2);
