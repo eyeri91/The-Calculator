@@ -25,8 +25,7 @@ function multiply(num1, num2) {
     return num1 * num2;
 }
 
-// Round the long decmials 
-// Avoid 'divide by 0'
+
 function divide(num1, num2) {
     if (num2 === 0) {
         return alert("Infinity! Don't divide numbers by 0.");
@@ -41,9 +40,12 @@ function round(num) {
 }
 
 
-function operate(operator, num1, num2) {
+equals.addEventListener('click', operate);
+
+function operate(num1, operator, num2) {
     return operator(num1, num2);
 }
+
 
 allClear.addEventListener('click', resetAll)
 
@@ -57,10 +59,21 @@ function resetAll() {
 
 clear.addEventListener('click', clearLastInput)
 
+// How to move preoperand to cur operand without operator and erase one by one?
 function clearLastInput() {
-    if (curOperand.innerHTML === '') return
+    if (curOperand.innerHTML === '' && preOperand.innerHTML === '') return
+    // if (curOperand.innerHTML === '' && preOperand.innerHTML !== '') {
+    //     firstNum = 
+    // }
     firstNum = curOperand.innerHTML.slice(0, -1);
     curOperand.innerHTML = firstNum;
+}
+
+decimal.addEventListener('click', addDecimal);
+
+function addDecimal() {
+    if (curOperand.innerHTML === '' || curOperand.innerHTML.includes('.')) return
+    curOperand.innerHTML += '.';
 }
 
 numbers.forEach(number =>
@@ -78,6 +91,7 @@ operators.forEach(operator =>
 
 function displayNum(operator) {
     firstNum = curOperand.innerHTML;
+    savedNum = firstNum;
     curOperator = operator;
 
     if (firstNum === '') return alert("Enter the operand first")
@@ -87,11 +101,10 @@ function displayNum(operator) {
     // Reset the current number display to get a new number;
     resetCurrentNum();
     firstNum = '';
+    return savedNum, curOperator;
 }
 
 resetCurrentNum = () => curOperand.innerHTML = '';
 // resetSavedNum = () => savedNum = '';
 
 
-// How to not to start with operator?
-// How to
