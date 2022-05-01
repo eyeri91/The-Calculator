@@ -9,7 +9,7 @@ const curOperand = document.querySelector('.current-operand');
 
 
 let firstNum = '';
-let secondNum = '';
+let nextNum = '';
 let curOperator = '';
 let savedNum;
 
@@ -101,8 +101,9 @@ function resetAll() {
     preOperand.innerHTML = '';
     curOperand.innerHTML = '';
     firstNum = '';
-    secondNum = '';
+    nextNum = '';
     curOperator = '';
+    savedNum = '';
 
 }
 
@@ -110,9 +111,17 @@ clear.addEventListener('click', clearLastInput)
 
 // How to move preoperand to cur operand without operator and erase one by one?
 function clearLastInput() {
-    if (curOperand.innerHTML === '' && preOperand.innerHTML === '') return
-    firstNum = curOperand.innerHTML.slice(0, -1);
-    curOperand.innerHTML = firstNum;
+    let previousInput = preOperand.innerHTML;
+    let currentInput = curOperand.innerHTML;
+    if (currentInput === '' && previousInput === '') return
+    if (currentInput !== '') {
+        firstNum = curOperand.innerHTML.slice(0, -1);
+        curOperand.innerHTML = firstNum;
+    }
+    if (previousInput !== '' && currentInput === '') {
+        firstNum = preOperand.innerHTML.slice(0, -1);
+        preOperand.innerHTML = firstNum;
+    }
 }
 
 decimal.addEventListener('click', addDecimal);
