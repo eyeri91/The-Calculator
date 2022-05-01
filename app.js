@@ -53,9 +53,9 @@ function evaluate() {
 
 
     let preInputList = preOperand.innerHTML.trim().split(' ');
-    let totalOperation = preInputList.join(' ') + ` ${curOperand.innerHTML}`;
+    // let totalOperation = preInputList.join(' ') + ` ${Number(curOperand.innerHTML)}`;
     let result = calculateByOrder(preInputList);
-    displayResult(result, totalOperation);
+    displayResult(result);
 }
 
 function calculateByOrder(preInputList) {
@@ -93,9 +93,11 @@ function operate(num1, operator, num2) {
     return operator(num1, num2);
 }
 
-function displayResult(result, totalOperation) {
-    preOperand.innerHTML = totalOperation;
-    curOperand.innerHTML = result;
+function displayResult(result) {
+    preOperand.innerHTML = result;
+    curOperand.innerHTML = '';
+    // preOperand.innerHTML = totalOperation;
+    // curOperand.innerHTML = result;
 }
 
 allClear.addEventListener('click', resetAll)
@@ -107,7 +109,6 @@ function resetAll() {
     nextNum = '';
     curOperator = '';
     savedNum = '';
-
 }
 
 clear.addEventListener('click', clearLastInput)
@@ -148,22 +149,26 @@ operators.forEach(operator =>
 
 
 function addOperator(operator) {
-    firstNum = Number(curOperand.innerHTML);
-    savedNum = firstNum;
+    let currentNum = curOperand.innerHTML;
+    let previousInput = preOperand.innerHTML;
+    savedNum = currentNum;
     curOperator = operator;
 
-    if (firstNum === '') return alert("Enter the operand first")
-
-    preOperand.innerHTML += ` ${firstNum} ${curOperator}`;
-
+    if (currentNum === '' && previousInput === '') return alert("Enter the operand first")
+    if (currentNum === '' && previousInput !== '') {
+        preOperand.innerHTML += ` ${curOperator}`;
+    } else {
+        preOperand.innerHTML += ` ${Number(currentNum)} ${curOperator}`;
+    }
     // Reset the current number display to get a new number;
     resetCurrentNum();
-    firstNum = '';
     return savedNum, curOperator;
 }
 
 resetCurrentNum = () => curOperand.innerHTML = '';
 // resetSavedNum = () => savedNum = '';
 
-//  How to continue the calculation once the first result is out?
+
 // How to not to have indefined after divde by 0 alert?
+
+// Reorganize variables name
