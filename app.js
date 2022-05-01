@@ -28,9 +28,7 @@ function multiply(num1, num2) {
 function divide(num1, num2) {
     if (num2 === 0) {
         return alert("Infinity! Don't divide numbers by 0.");
-
     }
-    // return num1 / num2;
     return round(num1 / num2);
 }
 
@@ -133,11 +131,11 @@ function getNewOperand(number) {
 }
 
 operators.forEach(operator =>
-    (operator.addEventListener('click', () => displayNum(operator.textContent)))
+    (operator.addEventListener('click', () => addOperator(operator.textContent)))
 )
 
 
-function displayNum(operator) {
+function addOperator(operator) {
     firstNum = curOperand.innerHTML;
     savedNum = firstNum;
     curOperator = operator;
@@ -159,3 +157,4 @@ resetCurrentNum = () => curOperand.innerHTML = '';
 
 //  Clear function when current operand is empty, erase the last input of the previous operand
 //  How to continue the calculation once the first result is out?
+// How to not to have indefined after divde by 0 alert?
