@@ -141,8 +141,8 @@ numbers.forEach(number =>
 )
 
 function getNewOperand(number) {
-    curOperand.innerHTML = '';
-    curOperand.innerHTML += number;
+    let zeroRemovedNum = Number(curOperand.innerHTML + number);
+    curOperand.innerHTML = zeroRemovedNum;
 }
 
 operators.forEach(operator =>
