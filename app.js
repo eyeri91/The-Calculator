@@ -7,12 +7,12 @@ const decimal = document.querySelector('.decimal');
 const preOperand = document.querySelector('.previous-operand');
 const curOperand = document.querySelector('.current-operand');
 
-
 let previousNum = '';
 let nextNum = '';
 let curOperator = '';
 let savedNum;
 curOperand.innerHTML = 0;
+
 
 function add(num1, num2) {
     return num1 + num2;
@@ -28,7 +28,8 @@ function multiply(num1, num2) {
 
 function divide(num1, num2) {
     if (num2 === 0) {
-        return null;
+        alert("Infinity! Don't divide by 0")
+        return curOperand.innerHTML = null;
     }
     return round(num1 / num2);
 }
@@ -45,7 +46,6 @@ function round(num) {
 
 equals.addEventListener('click', () => evaluate());
 
-
 function evaluate() {
     let previousInput = preOperand.innerHTML;
     let currentInput = curOperand.innerHTML;
@@ -55,10 +55,10 @@ function evaluate() {
 
 
     let preInputList = preOperand.innerHTML.trim().split(' ');
-    // let totalOperation = preInputList.join(' ') + ` ${Number(curOperand.innerHTML)}`;
     let result = calculateByOrder(preInputList);
     displayResult(result);
 }
+
 
 function calculateByOrder(preInputList) {
     let num1 = Number(preInputList[0]);
@@ -66,9 +66,6 @@ function calculateByOrder(preInputList) {
 
     if (preInputList.length === 2) {
         let num2 = Number(curOperand.innerHTML);
-        // if (operator === '÷' && num2 === 0) {
-        //     return resetAll();
-        // }
         return operate(num1, operator, num2);
 
     } else {
@@ -98,9 +95,8 @@ function operate(num1, operator, num2) {
 function displayResult(result) {
     preOperand.innerHTML = '';
     curOperand.innerHTML = result;;
-    // preOperand.innerHTML = totalOperation;
-    // curOperand.innerHTML = result;
 }
+
 
 allClear.addEventListener('click', resetAll)
 
@@ -112,6 +108,7 @@ function resetAll() {
     curOperator = '';
     savedNum = '';
 }
+
 
 clear.addEventListener('click', clearLastInput)
 
@@ -129,12 +126,14 @@ function clearLastInput() {
     }
 }
 
+
 decimal.addEventListener('click', addDecimal);
 
 function addDecimal() {
     if (curOperand.innerHTML === '' || curOperand.innerHTML.includes('.')) return
     curOperand.innerHTML += '.';
 }
+
 
 numbers.forEach(number =>
     (number.addEventListener('click', () => getNewOperand(number.textContent)))
@@ -145,10 +144,10 @@ function getNewOperand(number) {
     curOperand.innerHTML = zeroRemovedNum;
 }
 
+
 operators.forEach(operator =>
     (operator.addEventListener('click', () => addOperator(operator.textContent)))
 )
-
 
 function addOperator(operator) {
     let currentNum = curOperand.innerHTML;
@@ -157,18 +156,12 @@ function addOperator(operator) {
     curOperator = operator;
 
     if (currentNum === '' && previousInput === '') return alert("Enter the operand first")
-    // if (currentNum === '' && previousInput !== '') {
-    //     preOperand.innerHTML += ` ${curOperator}`;
-    // } else {
+
     preOperand.innerHTML += ` ${Number(currentNum)} ${curOperator}`;
-    // }
-    // Reset the current number display to get a new number;
+
     resetCurrentNum();
     return savedNum, curOperator;
 }
 
 resetCurrentNum = () => curOperand.innerHTML = '';
 
-
-// How to not to have indefined after divde by 0 alert?
-// Reorganize variables name
