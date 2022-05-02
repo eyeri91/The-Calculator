@@ -8,7 +8,7 @@ const preOperand = document.querySelector('.previous-operand');
 const curOperand = document.querySelector('.current-operand');
 
 
-let firstNum = '';
+let previousNum = '';
 let nextNum = '';
 let curOperator = '';
 let savedNum;
@@ -43,6 +43,7 @@ function round(num) {
 
 
 equals.addEventListener('click', () => evaluate());
+
 
 function evaluate() {
     let previousInput = preOperand.innerHTML;
@@ -105,7 +106,7 @@ allClear.addEventListener('click', resetAll)
 function resetAll() {
     preOperand.innerHTML = '';
     curOperand.innerHTML = '';
-    firstNum = '';
+    previousNum = '';
     nextNum = '';
     curOperator = '';
     savedNum = '';
@@ -113,18 +114,17 @@ function resetAll() {
 
 clear.addEventListener('click', clearLastInput)
 
-// How to move preoperand to cur operand without operator and erase one by one?
 function clearLastInput() {
     let previousInput = preOperand.innerHTML;
     let currentInput = curOperand.innerHTML;
     if (currentInput === '' && previousInput === '') return
     if (currentInput !== '') {
-        firstNum = curOperand.innerHTML.slice(0, -1);
-        curOperand.innerHTML = firstNum;
+        nextNum = curOperand.innerHTML.slice(0, -1);
+        curOperand.innerHTML = nextNum;
     }
     if (previousInput !== '' && currentInput === '') {
-        firstNum = preOperand.innerHTML.slice(0, -1);
-        preOperand.innerHTML = firstNum;
+        previousNum = preOperand.innerHTML.slice(0, -1);
+        preOperand.innerHTML = previousNum;
     }
 }
 
@@ -166,9 +166,7 @@ function addOperator(operator) {
 }
 
 resetCurrentNum = () => curOperand.innerHTML = '';
-// resetSavedNum = () => savedNum = '';
 
 
 // How to not to have indefined after divde by 0 alert?
-
 // Reorganize variables name
