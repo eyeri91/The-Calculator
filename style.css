@@ -233,7 +233,7 @@ button {
 .number:hover {
     color: #dad7cd;
     background-color: #d88d24;
-    box-shadow: 1px 1px 2px 0.5px #9a6d29;
+    box-shadow: 1px 1px 3px 0.5px #b37e2f;
 }
 
 .row {
@@ -248,7 +248,7 @@ button {
 
 .twice-big:hover {
     background-color: #993032;
-    box-shadow: 1px 1px 3px 0.5px #6f2e30;
+    box-shadow: 1px 1px 3px 0.5px #61282b;
 }
 
 .all-clear:hover,
