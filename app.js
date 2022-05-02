@@ -12,6 +12,7 @@ let previousNum = '';
 let nextNum = '';
 let curOperator = '';
 let savedNum;
+curOperand.innerHTML = 0;
 
 function add(num1, num2) {
     return num1 + num2;
@@ -95,8 +96,8 @@ function operate(num1, operator, num2) {
 }
 
 function displayResult(result) {
-    preOperand.innerHTML = result;
-    curOperand.innerHTML = '';
+    preOperand.innerHTML = '';
+    curOperand.innerHTML = result;;
     // preOperand.innerHTML = totalOperation;
     // curOperand.innerHTML = result;
 }
@@ -140,6 +141,7 @@ numbers.forEach(number =>
 )
 
 function getNewOperand(number) {
+    curOperand.innerHTML = '';
     curOperand.innerHTML += number;
 }
 
@@ -155,11 +157,11 @@ function addOperator(operator) {
     curOperator = operator;
 
     if (currentNum === '' && previousInput === '') return alert("Enter the operand first")
-    if (currentNum === '' && previousInput !== '') {
-        preOperand.innerHTML += ` ${curOperator}`;
-    } else {
-        preOperand.innerHTML += ` ${Number(currentNum)} ${curOperator}`;
-    }
+    // if (currentNum === '' && previousInput !== '') {
+    //     preOperand.innerHTML += ` ${curOperator}`;
+    // } else {
+    preOperand.innerHTML += ` ${Number(currentNum)} ${curOperator}`;
+    // }
     // Reset the current number display to get a new number;
     resetCurrentNum();
     return savedNum, curOperator;
