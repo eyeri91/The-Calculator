@@ -106,7 +106,7 @@ allClear.addEventListener('click', resetAll)
 
 function resetAll() {
     preOperand.innerHTML = '';
-    curOperand.innerHTML = '';
+    curOperand.innerHTML = '0';
     previousNum = '';
     nextNum = '';
     curOperator = '';
