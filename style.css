@@ -230,9 +230,9 @@ button {
 }
 
 
-button:hover {
+.number:hover {
     color: #dad7cd;
-    background-color: #e09f3e;
+    background-color: #d88d24;
     box-shadow: 1px 1px 2px 0.5px #9a6d29;
 }
 
@@ -253,12 +253,14 @@ button:hover {
 
 .all-clear:hover,
 .clear:hover {
+    color: #dad7cd;
     background-color: #2f3031;
     box-shadow: 1px 1px 3px 0.5px #0d1b2a;
 }
 
 .operator:hover,
 .decimal:hover {
+    color: #dad7cd;
     background-color: #292c50;
     box-shadow: 1px 1px 3px 0.5px #181930;
 }
