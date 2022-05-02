@@ -6,42 +6,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <header></header>
     <div class="container">
         <div class="calc-body">
-            <div class="display">
-                <div class="calc-display">
-                    <div class="user-input"></div>
-                    <div class="output"></div>
-                </div>
+            <div class="output">
+                <div class="previous-operand"></div>
+                <div class="current-operand"></div>
             </div>
             <div class="all-buttons">
-                <button class="all-clear">AC</button>
-                <button class="cleaer">C</button>
-                <button class="operator" id="remainder">%</button>
-                <button class="operator" id="divider">&divide;</button>
-                <button class="number" id="num-8">8</button>
-                <button class="number" id="num-7">7</button>
-                <button class="number" id="num-9">9</button>
-                <button class="operator" id="add">+</button>
-                <button class="number" id="num-4">4</button>
-                <button class="number" id="num-5">5</button>
-                <button class="number" id="num-6">6</button>
-                <button class="operator" id="subtract">-</button>
-                <button class="number" id="num-1">1</button>
-                <button class="number" id="num-2">2</button>
-                <button class="number" id="num-3">3</button>
-                <button class="operater" id="multiply">x</button>
-                <button class="decimal" id="decimal">.</button>
-                <button class="number" id="num-0">0</button>
-                <button class="equal" id="equal">=</button>
+                <div class="row ">
+                    <button class="all-clear ">AC</button>
+                    <button class="clear ">C</button>
+                    <button class="operator" id="remainder">%</button>
+                    <button class="operator" id="divider">÷</button>
+                </div>
+                <div class="row">
+                    <button class="number" id="num-8">8</button>
+                    <button class="number" id="num-7">7</button>
+                    <button class="number" id="num-9">9</button>
+                    <button class="operator" id="add">+</button>
+                </div>
+                <div class="row">
+                    <button class="number" id="num-4">4</button>
+                    <button class="number" id="num-5">5</button>
+                    <button class="number" id="num-6">6</button>
+                    <button class="operator" id="subtract">-</button>
+                </div>
+                <div class="row">
+                    <button class="number" id="num-1">1</button>
+                    <button class="number" id="num-2">2</button>
+                    <button class="number" id="num-3">3</button>
+                    <button class="operator" id="multiply">x</button>
+                </div>
+                <div class="row">
+                    <button class="decimal" id="decimal">.</button>
+                    <button class="number" id="num-0">0</button>
+                    <button class="equals twice-big" id="equals">=</button>
+                </div>
             </div>
         </div>
     </div>
-    <footer></footer>
+    <footer>
+        <p>Made by Yuri the doer</p>
+    </footer>
 
 </body>
 <script src="app.js"></script>
