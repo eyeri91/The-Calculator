@@ -249,6 +249,18 @@ button:hover {
 }
 
 .twice-big:hover {
-    background-color: #ae2e31;
-    box-shadow: 1px 1px 3px 0.5px #742628;
+    background-color: #993032;
+    box-shadow: 1px 1px 3px 0.5px #6f2e30;
+}
+
+.all-clear:hover,
+.clear:hover {
+    background-color: #2f3031;
+    box-shadow: 1px 1px 3px 0.5px #0d1b2a;
+}
+
+.operator:hover,
+.decimal:hover {
+    background-color: #292c50;
+    box-shadow: 1px 1px 3px 0.5px #181930;
 }
