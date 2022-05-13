@@ -6,29 +6,13 @@ class Calculator {
     }
 
     clear() {
-        this.currentOperand = this.currentOperand.slice(0, -1);
+        this.currentOperand = this.currentOperand.toString().slice(0, -1);
     }
 
     allClear() {
         this.currentOperand = '';
         this.previousOperand = '';
         this.operator = undefined;
-
-    }
-
-    add() {
-
-    }
-
-    subtract() {
-
-    }
-
-    divide() {
-
-    }
-
-    multiply() {
 
     }
 
