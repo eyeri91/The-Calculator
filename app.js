@@ -7,14 +7,13 @@ class Calculator {
 
     clear() {
         this.currentOperand = this.currentOperand.slice(0, -1);
-        this.updateDisply()
     }
 
     allClear() {
         this.currentOperand = '';
         this.previousOperand = '';
         this.operator = undefined;
-        this.updateDisply()
+
     }
 
     add() {
@@ -40,10 +39,13 @@ class Calculator {
 
     getOperator(operator) {
         if (this.currentOperand === '') return
+        if (this.previousOperand !== '') {
+            this.calculate()
+        }
         this.operator = operator;
-        this.previousOperand = `${this.currentOperand} ${operator}`
+        this.previousOperand = this.currentOperand;
         this.currentOperand = '';
-        // this.previousOperand = this.currentOperand + operator;
+
     }
 
     calculate() {
@@ -70,8 +72,10 @@ class Calculator {
                 break
             default:
                 return
-
         }
+        this.currentOperand = computation;
+        this.operator = undefined;
+        this.previousOperand = '';
     }
 
     updateDisply() {
@@ -109,12 +113,15 @@ operators.forEach(button => {
 
 equals.addEventListener('click', () => {
     calculator.calculate()
+    calculator.updateDisply()
 })
 
 allClear.addEventListener('click', () => {
     calculator.allClear()
+    calculator.updateDisply()
 })
 
 clear.addEventListener('click', () => {
     calculator.clear()
+    calculator.updateDisply()
 })
