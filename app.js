@@ -29,7 +29,6 @@ class Calculator {
         this.operator = operator;
         this.previousOperand = this.currentOperand;
         this.currentOperand = '';
-
     }
 
     calculate() {
@@ -62,9 +61,20 @@ class Calculator {
         this.previousOperand = '';
     }
 
+    getDisplayNumber(number) {
+        return number
+    }
+
     updateDisply() {
-        this.curOperandTextElement.innerText = this.currentOperand;
-        this.preOperandTextElement.innerText = this.previousOperand;
+        this.curOperandTextElement.innerText =
+            this.getDisplayNumber(this.currentOperand);
+        if (this.operator != undefined) {
+            this.preOperandTextElement.innerText =
+                `${this.getDisplayNumber(this.previousOperand)} ${this.operator}`
+        } else {
+            this.preOperandTextElement.innerText = '';
+        }
+        // this.preOperandTextElement.innerText = this.previousOperand;
     }
 
 }
