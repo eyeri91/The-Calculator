@@ -62,7 +62,9 @@ class Calculator {
     }
 
     getDisplayNumber(number) {
-        return number
+        const floatNum = parseFloat(number)
+        if (isNaN(floatNum)) return '';
+        return floatNum.toLocaleString('en');
     }
 
     updateDisply() {
@@ -74,7 +76,6 @@ class Calculator {
         } else {
             this.preOperandTextElement.innerText = '';
         }
-        // this.preOperandTextElement.innerText = this.previousOperand;
     }
 
 }
