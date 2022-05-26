@@ -73,7 +73,9 @@ class Calculator {
                 { maximumFractionDigits: 0 });
         }
         if (decimalDigits != null) {
-            return `${integerDisplay}.${decimalDigits}`
+            let tenthDecimal = decimalDigits.slice(0, 10);
+            return `${integerDisplay}.${tenthDecimal}`;
+
         } else {
             return integerDisplay
         }
@@ -89,7 +91,6 @@ class Calculator {
             this.preOperandTextElement.innerText = '';
         }
     }
-
 }
 
 
